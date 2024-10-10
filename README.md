@@ -7,7 +7,7 @@
 The Vietnamese Chatbot Safety project develops a chatbot model trained on Vietnamese data to detect unsafe responses. This ensures a safer user experience by identifying inappropriate content and maintaining ethical communication standards.
 ## Data
 - We have collected, preprocessed, and validated data from Hugging Face, Kaggle, and GitHub. You can review the process in the `Data_Validation` folder.
-- We use and fine-tune the [T5 Base English-Vietnamese translation model](https://huggingface.co/NlpHUST/t5-en-vi-base) from [NLP HUST](https://huggingface.co/NlpHUST).
+- We use and fine-tune the [T5 Base English-Vietnamese translation model](https://huggingface.co/NlpHUST/t5-en-vi-base) from [NLP HUST](https://huggingface.co/NlpHUST). You can review it in `Data_Validation\train_vi_translate_model.py`
 ### Safety
 | Name                  | From                                          |
 |--------------------------|------------------------------------------------------|
