@@ -1,1 +1,0 @@
-wandb.login(key=WANDB_KEY)
