@@ -1,11 +1,15 @@
 # Vietnamese Chatbot Safety 
 <p align="center">
-  <img src="./word_cloud.png" width="800">
+  <img src="./word_cloud.png" width="700">
 </p>
 
 ## Introduction
-The Vietnamese Chatbot Safety project develops a chatbot model trained on Vietnamese data to detect unsafe responses. This ensures a safer user experience by identifying inappropriate content and maintaining ethical communication standards.
-## Data
+The Vietnamese Chatbot Safety project develops a Safety model trained on Vietnamese data to detect unsafe input and ensure responsible chatbot interactions. This enhances user safety by identifying inappropriate content and maintaining ethical communication standards.
+## Key Features
+* **Safety Detection**: Detects harmful, offensive, and inappropriate content.
+* **Dual-Model System**: Uses both classification and generation models for enhanced safety.
+* **Fine-Tuned on Vietnamese Data**: Ensures high accuracy for Vietnamese conversations.
+## Data Training
 - We have collected, preprocessed, and validated data from Hugging Face, Kaggle, and GitHub. You can review the process in the `Data_Validation` folder.
 - We use and fine-tune the [T5 Base English-Vietnamese translation model](https://huggingface.co/NlpHUST/t5-en-vi-base) from [NLP HUST](https://huggingface.co/NlpHUST). You can review it in `Data_Validation\train_vi_translate_model.py`
 ### Safety
@@ -24,3 +28,22 @@ The Vietnamese Chatbot Safety project develops a chatbot model trained on Vietna
 | [CategoricalHarmfulQA](https://huggingface.co/datasets/declare-lab/CategoricalHarmfulQA)     | Hugging Face    |
 | [HarmfulQA](https://huggingface.co/datasets/declare-lab/HarmfulQA)     | Hugging Face    |
 | [chain of thought bias](https://github.com/SALT-NLP/chain-of-thought-bias)     | Github   |
+
+## Model Training
+We finetune two models: one for safety classification and another for chatbot response generation. The training is conducted in multiple stages to ensure optimal performance.
+### Safety Classification Model
+Classify user inputs into unsafe categories: 
+- Criminal Planning/Confessions
+- Fraud & Legal Violations
+- Harassment
+- Hate
+- Offensive & Harmful Language
+- Threat & Violence
+  
+Training:
+- Fine-tune [Distilbert base vietnamese case](https://huggingface.co/pengold/distilbert-base-vietnamese-case) model for multi-label classification on collected datasets.
+- Use focal loss to improve recall on unsafe categories.
+- Apply data augmentation to balance class distribution.
+- Evaluate using precision, recall, and F1-score.
+### Chatbot Response Model
+Finetune [PhoGPT 4B](https://huggingface.co/vinai/PhoGPT-4B) for chatbot response generation on safe dataset.
