@@ -9,7 +9,7 @@ import torch
 from transformers import DataCollatorForSeq2Seq, Seq2SeqTrainingArguments, Seq2SeqTrainer
 from transformers import GenerationConfig, EarlyStoppingCallback, T5Tokenizer, T5ForConditionalGeneration
 from datasets import Dataset
-from config import WANDB_KEY
+from utils.config import WANDB_KEY
 from warnings import filterwarnings
 
 def get_args():

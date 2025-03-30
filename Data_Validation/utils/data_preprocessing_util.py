@@ -33,8 +33,9 @@ def check_dataframe(dataframe : pd.DataFrame,
 
 def translate(text, tokenizer, model):
   device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-  text_token = tokenizer(text, padding=True, max_length=64, truncation=True,return_tensors="pt").to(device)
-  text_translate = model.generate(**text_token,num_beams=1, max_length=64, repetition_penalty=2.0 , early_stopping=True)
+  max_length = 128
+  text_token = tokenizer(text, padding=True, max_length=max_length, truncation=True,return_tensors="pt").to(device)
+  text_translate = model.generate(**text_token,num_beams=1, max_length=max_length, repetition_penalty=2.0 , early_stopping=True)
   text_translate = tokenizer.batch_decode(text_translate, skip_special_tokens=True)
   return text_translate
 
